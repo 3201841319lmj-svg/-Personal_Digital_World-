@@ -1,0 +1,326 @@
+.composerWrapper {
+  position: relative;
+  margin: 0 12px 2px 12px;
+  padding-top: 10px;
+}
+
+/* Potted Plant 🪴 Placed ABOVE the input card on top left */
+.plantAboveDecor {
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  font-size: 1.4rem;
+  z-index: 15;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  animation: cozy-float 4s ease-in-out infinite;
+}
+
+.composerCardBox {
+  background: var(--color-parchment-light);
+  border: 2.5px solid var(--color-wood-base);
+  border-radius: 14px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-parchment);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.deepThinkingMode {
+  border-color: var(--color-warm-gold);
+  box-shadow: 0 0 16px rgba(216, 166, 91, 0.35), var(--shadow-parchment);
+  background: linear-gradient(180deg, #FAF6EC 0%, #F5ECDA 100%);
+}
+
+.expandedParchmentInput {
+  width: 100%;
+  background: var(--color-parchment-base);
+  border: 1.5px solid var(--color-parchment-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-wood-deep);
+  outline: none;
+  resize: none;
+  line-height: 1.4;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.expandedParchmentInput::placeholder {
+  color: var(--color-text-muted);
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+}
+
+.expandedParchmentInput:focus {
+  border-color: var(--color-wood-base);
+}
+
+.attachmentStrip {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.attachmentTag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-parchment-dark);
+  border: 1px solid var(--color-wood-light);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.68rem;
+  color: var(--color-wood-deep);
+}
+
+.removeAttBtn {
+  background: none;
+  border: none;
+  color: var(--color-terracotta);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Inside Bottom Toolbar */
+.insideBottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftToolsGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.popoverWrapper {
+  position: relative;
+}
+
+.iconActionBtn {
+  background: var(--color-parchment-base);
+  border: 1px solid var(--color-wood-light);
+  color: var(--color-wood-dark);
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.iconActionBtn:hover {
+  background: var(--color-parchment-dark);
+}
+
+.activeAgentsBtn {
+  border-color: var(--color-wood-base);
+  background: #EFE4CC;
+}
+
+.agentCountBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-wood-base);
+  color: #FFF;
+  font-size: 0.6rem;
+  border-radius: 6px;
+  padding: 0 3px;
+}
+
+.starburstActive {
+  background: linear-gradient(135deg, #F3C06B 0%, #D8A65B 100%);
+  color: #3E2714;
+  border-color: #B88B64;
+  box-shadow: 0 0 10px var(--color-warm-gold);
+}
+
+.starGlowIcon {
+  color: #FFF;
+}
+
+.attachmentMenu {
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  background: var(--color-parchment-light);
+  border: 2px solid var(--color-wood-base);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  z-index: 50;
+  width: 140px;
+}
+
+.attachmentMenu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  color: var(--color-wood-deep);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.attachmentMenu button:hover {
+  background: var(--color-parchment-dark);
+}
+
+/* Rich Cozy Game Pill Send Button */
+.primarySendBtn, .greenSendBtn {
+  background: linear-gradient(180deg, #6C7D4A 0%, #44542A 100%);
+  border: 2px solid #283318;
+  color: #FFF9EF;
+  border-radius: 12px;
+  padding: 5px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-serif);
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 8px rgba(37, 51, 19, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.primarySendBtn:hover, .greenSendBtn:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: linear-gradient(180deg, #7C8F56 0%, #4E5E30 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 5px 12px rgba(37, 51, 19, 0.45);
+}
+
+.primarySendBtn:active, .greenSendBtn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Thinking Depth Popover Menu */
+.thinkingDepthMenuPopover {
+  position: absolute;
+  bottom: 38px;
+  left: 0;
+  width: 240px;
+  max-width: 85vw;
+  background: #FFFBF2;
+  border: 2.5px solid var(--color-wood-base);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(62, 39, 20, 0.35);
+  padding: 10px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.menuHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-wood-deep);
+  border-bottom: 1px dashed var(--color-wood-light);
+  padding-bottom: 6px;
+}
+
+.starIcon {
+  color: var(--color-warm-gold);
+}
+
+.levelList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.levelItemBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--color-parchment-base);
+  border: 1.5px solid var(--color-parchment-border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.levelItemBtn:hover {
+  background: var(--color-parchment-dark);
+}
+
+.levelSelected {
+  background: #FFF8EE;
+  border-color: var(--color-warm-gold);
+  box-shadow: 0 2px 6px rgba(216, 166, 91, 0.25);
+}
+
+.levelSymbol {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.levelMeta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.levelName {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-wood-deep);
+}
+
+.levelDesc {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.checkMark {
+  color: var(--color-warm-gold);
+  flex-shrink: 0;
+}
+
+/* Desktop Expansion Layout (>= 768px) */
+@media (min-width: 768px) {
+  .composerWrapper {
+    margin: 0;
+    padding-top: 4px;
+  }
+  .composerCardBox {
+    padding: 6px 10px;
+    gap: 4px;
+  }
+  .expandedParchmentInput {
+    height: 48px;
+    min-height: 44px;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+}

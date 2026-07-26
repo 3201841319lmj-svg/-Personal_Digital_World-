@@ -1,0 +1,13 @@
+.proverbContainer {
+  margin: 0 12px 2px 12px;
+  text-align: center;
+  padding: 2px 8px;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-wood-deep);
+  letter-spacing: 0.5px;
+}

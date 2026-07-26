@@ -1,0 +1,190 @@
+.showcaseCard {
+  background: var(--color-parchment-light);
+  border: 3px solid var(--color-wood-base);
+  border-radius: 14px;
+  padding: 8px 10px;
+  box-shadow: var(--shadow-parchment);
+  position: relative;
+  margin: 6px 12px 2px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sceneSelectorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4px;
+}
+
+.sceneBtn {
+  flex: 1;
+  background: var(--color-parchment-base);
+  border: 1px solid var(--color-parchment-border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding: 3px 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.activeScene {
+  background: var(--color-wood-base);
+  color: #FFF8EE;
+  border-color: var(--color-wood-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.imageSlotContainer {
+  position: relative;
+  width: 100%;
+}
+
+/* Image Frame Area */
+.imageFrame {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  border: 2px solid var(--color-wood-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.sceneImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Time Period Gradient Overlays */
+.timePeriodOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.timePeriodOverlay.morning {
+  background: linear-gradient(180deg, rgba(255, 235, 180, 0.12) 0%, transparent 60%);
+}
+.timePeriodOverlay.afternoon {
+  background: linear-gradient(180deg, rgba(255, 180, 100, 0.1) 0%, transparent 60%);
+}
+.timePeriodOverlay.night {
+  background: linear-gradient(180deg, rgba(20, 30, 60, 0.3) 0%, transparent 80%);
+}
+
+/* Stardew Valley Style Pixel Chicken Sprite */
+.pixelChickenBadge {
+  position: absolute;
+  bottom: -6px;
+  right: 6px;
+  font-size: 1.6rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  z-index: 10;
+  animation: cozy-float 3s ease-in-out infinite;
+}
+
+/* Single Row with Two Side-by-Side Parallel Boxes */
+.sideBySideRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Left Box: Dynamic Living Status Display */
+.livingStatusBox {
+  flex: 1;
+  background: #FFF9EF;
+  border: 1.5px solid var(--color-warm-gold);
+  border-radius: 8px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: inset 0 1px 2px rgba(216, 166, 91, 0.2);
+}
+
+.statusActionGroup, .statusItemGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.statusIcon {
+  font-size: 0.88rem;
+}
+
+.statusText {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-wood-deep);
+  white-space: nowrap;
+}
+
+/* Right Box: Compact Resource Stats Display */
+.compactStatsBox {
+  flex: 1;
+  background: var(--color-parchment-base);
+  border: 1.5px dashed var(--color-wood-light);
+  border-radius: 8px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4px;
+}
+
+.compactItem {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.compactIcon {
+  font-size: 0.85rem;
+}
+
+.compactName {
+  font-weight: 700;
+  color: var(--color-wood-deep);
+}
+
+.compactCount {
+  font-weight: 800;
+  color: var(--color-terracotta);
+}
+
+@media (max-width: 480px) {
+  .imageFrame {
+    height: 185px;
+  }
+}
+
+/* Responsive Desktop Expansion (>= 768px) */
+@media (min-width: 768px) {
+  .showcaseCard {
+    margin: 0;
+    padding: 8px 10px;
+    gap: 6px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .imageFrame {
+    height: clamp(160px, 30vh, 250px);
+  }
+  .sceneBtn {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}

@@ -1,0 +1,68 @@
+.singleLineNavDesk {
+  margin-top: auto;
+  background: linear-gradient(180deg, var(--color-wood-base) 0%, var(--color-wood-deep) 100%);
+  border-top: 3px solid var(--color-wood-dark);
+  padding: 8px 12px;
+  position: relative;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.singleLineRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 6px;
+  max-width: 100%;
+}
+
+/* Icon + Text on SAME LINE */
+.navInlineBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(180deg, #FBF6EB 0%, #EDE1C4 100%);
+  border: 2px solid var(--color-wood-dark);
+  border-radius: 10px;
+  padding: 8px 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.navInlineBtn:hover {
+  background: linear-gradient(180deg, #FFF9EF 0%, #F5E8CB 100%);
+  transform: translateY(-1px);
+}
+
+.activeInlineBtn {
+  background: linear-gradient(180deg, #FFF3D6 0%, #F1D495 100%);
+  border-color: var(--color-warm-gold);
+  box-shadow: 0 0 10px var(--color-warm-gold-glow);
+}
+
+.inlineIcon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.inlineTitle {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--color-wood-deep);
+  white-space: nowrap;
+}
+
+.inlineBadge {
+  background: var(--color-terracotta);
+  color: #FFF;
+  font-size: 0.65rem;
+  font-weight: 800;
+  border-radius: 8px;
+  padding: 1px 5px;
+  margin-left: 2px;
+}

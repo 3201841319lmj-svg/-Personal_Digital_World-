@@ -1,0 +1,87 @@
+.thinkingAccordionWrapper {
+  margin-bottom: 6px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px dashed var(--color-warm-gold);
+  background: #FAF5E8;
+}
+
+.thinkingHeaderBtn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 0.72rem;
+  color: var(--color-wood-deep);
+  transition: all 0.2s ease;
+}
+
+.thinkingHeaderBtn:hover {
+  background: rgba(216, 166, 91, 0.15);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sparkleIcon {
+  color: var(--color-warm-gold);
+}
+
+.pulsing {
+  animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.thinkingLabelText {
+  font-weight: 700;
+  font-family: var(--font-serif);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-text-muted);
+}
+
+.toggleHintText {
+  font-size: 0.65rem;
+}
+
+.thinkingLogContent {
+  padding: 6px 8px;
+  background: #FFFDF7;
+  border-top: 1px dashed rgba(216, 166, 91, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.thinkingStepItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  color: var(--color-wood-dark);
+}
+
+.stepDot {
+  color: var(--color-warm-gold);
+  font-weight: bold;
+}
+
+.stepText {
+  font-family: monospace;
+}
