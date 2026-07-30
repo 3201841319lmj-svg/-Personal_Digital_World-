@@ -50,6 +50,14 @@ Personal Digital World 的完整项目地图。每个项目都在此处注册，
 |------|------|------|--------|------|
 | **Magic_Workshop** | 创意工具和实验项目 | 🔄 进行中 | 多种 | `01_DreamGarden/Magic_Workshop` |
 
+### 文件助手控制台 | File_Assistant_Hub
+
+**定位** - 集成主题Feed流、AI Agent作用域与归档控制中心
+
+| 项目 | 描述 | 状态 | 技术栈 | 路径 |
+|------|------|------|--------|------|
+| **File_Assistant_Hub** | 文件与消息助手控制台 | 🔄 进行中 | React 19 + TypeScript + Vite | `01_DreamGarden/File_Assistant_Hub` |
+
 ### 魔法梦境系统 | Dream_System
 
 **定位** - 个人梦想追踪和可视化系统

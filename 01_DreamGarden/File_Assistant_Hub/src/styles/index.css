@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@400;500;600&display=swap');
+
+:root {
+  /* MUJI x Apple Journal Wabi-Sabi Color System */
+  --bg-warm-paper: #F5F1E9;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #FAF7F2;
+  --bg-agent-light: #EEF3F8;
+  
+  --primary-blue: #71859A;
+  --primary-blue-hover: #5B6E82;
+  --primary-blue-light: #E7EEF5;
+
+  --accent-brown: #9A8068;
+  --accent-brown-light: #F4ECE3;
+
+  --accent-green: #9AA89C;
+  --accent-green-light: #EBF2EC;
+
+  --text-main: #2C3238;
+  --text-muted: #7C848C;
+  --text-light: #A3AAB2;
+
+  --border-color: #E6E0D5;
+  --border-color-light: #F0EAE0;
+  
+  --shadow-sm: 0 2px 8px rgba(113, 133, 154, 0.04);
+  --shadow-md: 0 4px 16px rgba(113, 133, 154, 0.08);
+  --shadow-lg: 0 12px 32px rgba(44, 50, 56, 0.1);
+
+  /* Enhanced Noto Serif SC + Fallback Songti for guaranteed elegance */
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', 'Georgia', serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'HarmonyOS Sans', 'Microsoft YaHei', sans-serif;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-serif); /* Default to Noto Serif for UI headers & features */
+  background-color: var(--bg-warm-paper);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: radial-gradient(#E8E2D5 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+/* Explicit Serif for UI Features, Headers, Titles, and Buttons */
+h1, h2, h3, h4, h5, h6,
+.header-title, .brand-title, .brand-subtitle, .section-title, .bar-title,
+.nav-tab-btn, .toggle-btn, .btn, .dialog-head, .modal-header,
+.cat-box-name, .topic-brand-text, .fav-name, .sidebar-brand-text {
+  font-family: var(--font-serif) !important;
+}
+
+/* Explicit Sans-Serif for Chat Body, Task Items, and Detail Text */
+.font-sans,
+.text-body,
+.task-title-text,
+.text-content,
+.input-field,
+.file-meta,
+.bullets-list,
+.agent-intro,
+.sub-title {
+  font-family: var(--font-sans) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9D2C5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C4BCAC;
+}
+
+/* Base Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-blue-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(113, 133, 154, 0.25);
+}
+
+.btn-primary.danger {
+  background-color: #E74C3C;
+}
+
+.btn-primary.danger:hover {
+  background-color: #C0392B;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.25);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+.btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: #D3CBBC;
+}
+
+/* Card System */
+.card-paper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--bg-warm-paper);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Input pill styling */
+.input-pill {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.input-pill:focus-within {
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 24px rgba(113, 133, 154, 0.15);
+}
+
+.input-field {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: var(--text-main);
+  font-family: var(--font-sans) !important;
+}
+
+/* HIGH-ELEGANCE CENTERED MODAL & CONFIRMATION DIALOG */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44, 50, 56, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+}
+
+.confirm-dialog {
+  width: 380px;
+  max-width: 92vw;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.confirm-dialog .dialog-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.confirm-dialog .dialog-head h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.confirm-dialog p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.confirm-dialog .dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}

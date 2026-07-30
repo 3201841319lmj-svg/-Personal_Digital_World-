@@ -23,6 +23,7 @@ Personal Digital World
 **主要项目：**
 - **Babel_Tavern** - 巴别小馆
 - **Pixel_Farm** - 像素农场 AI 家园
+- **File_Assistant_Hub** - 文件助手控制台
 - **Magic_Workshop** - 魔法工坊
 - **Dream_System** - 魔法梦境系统
 - **Shared_Core** - 共享核心（Agent框架、Memory系统、UI组件库）
