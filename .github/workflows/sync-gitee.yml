@@ -1,0 +1,85 @@
+name: Sync GitHub to Gitee
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-gitee-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+      GITEE_REMOTE: https://gitee.com/liminjunjun/personal_-digital_-world.git
+      BACKUP_REF: refs/heads/backup/openclaw-frontend-before-personal-world
+    steps:
+      - name: Check required secret
+        shell: bash
+        run: |
+          if [ -z "$GITEE_TOKEN" ]; then
+            echo "Missing GitHub Actions secret: GITEE_TOKEN" >&2
+            exit 1
+          fi
+
+      - name: Check out complete history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Configure Gitee authentication
+        shell: bash
+        run: |
+          ASKPASS="$RUNNER_TEMP/gitee-askpass.sh"
+          printf '%s\n' \
+            '#!/bin/sh' \
+            'case "$1" in' \
+            '  *Username*) printf "%s" "liminjunjun" ;;' \
+            '  *Password*) printf "%s" "$GITEE_TOKEN" ;;' \
+            'esac' > "$ASKPASS"
+          chmod 700 "$ASKPASS"
+          echo "GIT_ASKPASS=$ASKPASS" >> "$GITHUB_ENV"
+          echo "GIT_TERMINAL_PROMPT=0" >> "$GITHUB_ENV"
+
+      - name: Preserve previous Gitee main
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! git ls-remote --exit-code --heads \
+            "$GITEE_REMOTE" "$BACKUP_REF" >/dev/null 2>&1; then
+            git fetch "$GITEE_REMOTE" \
+              refs/heads/main:refs/remotes/gitee/previous-main
+            git push "$GITEE_REMOTE" \
+              "refs/remotes/gitee/previous-main:$BACKUP_REF"
+          fi
+
+      - name: Sync pushed branch or tag
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event.deleted }}" = "true" ]; then
+            git push "$GITEE_REMOTE" ":$GITHUB_REF"
+          else
+            git push --force "$GITEE_REMOTE" "$GITHUB_REF:$GITHUB_REF"
+          fi
+
+      - name: Full synchronization
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin \
+            '+refs/heads/*:refs/remotes/origin/*' \
+            '+refs/tags/*:refs/tags/*' \
+            --prune
+          git push --force "$GITEE_REMOTE" \
+            'refs/remotes/origin/*:refs/heads/*'
+          git push --force "$GITEE_REMOTE" \
+            'refs/tags/*:refs/tags/*'
