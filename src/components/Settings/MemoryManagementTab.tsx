@@ -4,14 +4,14 @@ import { ShieldCheck, HardDrive, RefreshCw, Archive } from 'lucide-react';
 import styles from '../Modal/Modal.module.css';
 
 export const MemoryManagementTab: React.FC = () => {
-  const { agents, archivedAgents, restoreAgent } = useHomeStore();
+  const { agents, archivedAgents, restoreAgent, openAgentMemoryModal, setIsSettingsOpen } = useHomeStore();
 
   return (
     <div className={styles.tabPanelContent}>
       <div className={styles.panelTopRow}>
         <div>
           <h3 className={styles.panelTitle}>记忆管理与数据隔离</h3>
-          <p className={styles.panelDesc}>查看 Agent 独立记忆库、云端归档记录与 OpenClaw 管理员恢复功能</p>
+          <p className={styles.panelDesc}>查看 Agent 独立三层记忆库、云端归档记录与 OpenClaw 管理员恢复功能</p>
         </div>
       </div>
 
@@ -19,14 +19,14 @@ export const MemoryManagementTab: React.FC = () => {
       <div className={styles.masterBanner}>
         <ShieldCheck size={20} className={styles.shieldIcon} />
         <div>
-          <strong>OpenClaw 管理员特权与云端记忆封存机制</strong>
-          <p>伙伴从农场主管理列表移除后，其记忆库绝不删除。OpenClaw 可在云端服务器永久封存，有需要时可随时一键恢复载入！</p>
+          <strong>OpenClaw 管理员特权与三层记忆大脑隔离机制</strong>
+          <p>伙伴拥有专属核心记忆注入、农场主偏好捕捉与每日聊天归档。在云端服务器永久封存，有需要时可随时一键恢复载入！</p>
         </div>
       </div>
 
       {/* Active Agent Memory Cards */}
       <div className={styles.memoryGrid}>
-        <h4 className={styles.sectionHeaderTitle}>在线 Agent 独立记忆库</h4>
+        <h4 className={styles.sectionHeaderTitle}>在线 Agent 三层独立记忆大脑</h4>
         {agents.map(agent => (
           <div key={agent.id} className={styles.memoryCard}>
             <div className={styles.memoryCardHeader}>
@@ -35,7 +35,26 @@ export const MemoryManagementTab: React.FC = () => {
                 <span className={styles.memoryAgentName}>{agent.name}</span>
                 <span className={styles.memoryDbId}>DB: {agent.memoryDbId}</span>
               </div>
-              {agent.isMasterAgent && <span className={styles.adminTag}>全局管理</span>}
+              <button
+                onClick={() => {
+                  setIsSettingsOpen(false);
+                  openAgentMemoryModal(agent.id);
+                }}
+                style={{
+                  background: '#8b5a2b',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  padding: '4px 8px',
+                  fontSize: '11px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                🧠 三层记忆大脑
+              </button>
             </div>
 
             <div className={styles.memoryItemsList}>

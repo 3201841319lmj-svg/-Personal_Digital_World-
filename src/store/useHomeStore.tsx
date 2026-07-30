@@ -38,11 +38,17 @@ import {
 import { createAgentProvider } from '../services/agentProvider';
 import { syncStoriesToTencentOpenClaw, OpenClawSyncResult } from '../services/openClawService';
 import { drawThreeCards, buildTarotPureTextPrompt } from '../services/tarotService';
+import { createDefaultMemoryStore, appendChatMessageToDailyLog } from '../utils/memoryEngine';
 
 export type TabType = 'farm' | 'livingroom' | 'study' | 'bedroom';
 export type ThemeType = 'parchment' | 'moss' | 'starry';
 
 interface HomeContextType {
+  // Agent Memory Modal
+  isAgentMemoryModalOpen: boolean;
+  setIsAgentMemoryModalOpen: (open: boolean) => void;
+  selectedMemoryAgentId: string;
+  openAgentMemoryModal: (agentId: string) => void;
   // Theme Setup
   currentTheme: ThemeType;
   setTheme: (theme: ThemeType) => void;
@@ -179,6 +185,13 @@ export const HomeProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isAgentModalOpen, setIsAgentModalOpen] = useState(false);
+  const [isAgentMemoryModalOpen, setIsAgentMemoryModalOpen] = useState(false);
+  const [selectedMemoryAgentId, setSelectedMemoryAgentId] = useState<string>('openclaw');
+
+  const openAgentMemoryModal = (agentId: string) => {
+    setSelectedMemoryAgentId(agentId);
+    setIsAgentMemoryModalOpen(true);
+  };
 
   const [isLivingSearchOpen, setIsLivingSearchOpen] = useState(false);
   const [isLivingTopicDrawerOpen, setIsLivingTopicDrawerOpen] = useState(false);
@@ -1187,6 +1200,10 @@ export const HomeProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <HomeContext.Provider value={{
+      isAgentMemoryModalOpen,
+      setIsAgentMemoryModalOpen,
+      selectedMemoryAgentId,
+      openAgentMemoryModal,
       currentTheme,
       setTheme,
       activeTab,

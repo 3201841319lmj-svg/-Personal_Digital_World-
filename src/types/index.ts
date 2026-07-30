@@ -45,6 +45,46 @@ export interface UserProfile {
   enableSignature: boolean;
 }
 
+export interface UserBasicMemoryInfo {
+  userName: string;
+  userRoleTitle: string;
+  genderOrTitle: string;
+  bioSignature?: string;
+  birthdayOrSign?: string;
+}
+
+export interface CoreMemory {
+  agentPersona: string;
+  backstory: string;
+  behaviorRules: string[];
+  userInfo: UserBasicMemoryInfo;
+}
+
+export interface UserPreferenceItem {
+  id: string;
+  category: 'preference' | 'habit' | 'taboo' | 'emotion';
+  content: string;
+  updatedAt: string;
+  importanceLevel?: 'high' | 'medium' | 'low';
+}
+
+export interface DailyLogEntry {
+  id: string;
+  date: string; // YYYY-MM-DD
+  messagesCount: number;
+  summary: string;
+  keywords: string[];
+  messagesSnapshot: ChatMessage[];
+  updatedAt: string;
+}
+
+export interface AgentMemoryStore {
+  coreMemory: CoreMemory;
+  userPreferences: UserPreferenceItem[];
+  dailyLogs: DailyLogEntry[];
+  lastConsolidatedAt?: string;
+}
+
 export interface AgentConfig {
   id: string;
   name: string;
@@ -65,6 +105,7 @@ export interface AgentConfig {
   
   memoryDbId: string;
   memoryItems: string[];
+  memoryStore?: AgentMemoryStore;
 }
 
 export interface ArchivedAgent {

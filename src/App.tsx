@@ -5,6 +5,7 @@ import { HistoryDrawer } from './components/Drawer/HistoryDrawer';
 import { HomeNavigation } from './components/Navigation/HomeNavigation';
 import { SettingsModal } from './components/Modal/SettingsModal';
 import { AgentSelectorModal } from './components/Modal/AgentSelectorModal';
+import { AgentMemoryModal } from './components/Modal/AgentMemoryModal';
 
 import { HomePage } from './pages/HomePage';
 import { LivingRoomPage } from './pages/LivingRoomPage';
@@ -35,6 +36,7 @@ const MainViewContent: React.FC = () => {
       {/* Modals & Overlays */}
       <SettingsModal />
       <AgentSelectorModal />
+      <AgentMemoryModal />
     </main>
   );
 };
