@@ -64,6 +64,7 @@ Personal Digital World
 
 ## 🚀 快速导航
 
+- 🤝 **[AI Studio 协作指示](./AGENTS.md)** - AI 团队组织架构、职责边界、开发流程与审核规则
 - 📋 **[项目地图](./PROJECT_INDEX.md)** - 所有项目详细索引
 - 🗓️ **[发展规划](./ROADMAP.md)** - 当前阶段与未来方向
 - 📁 **[完整目录结构](./STRUCTURE.md)** - 详细的目录说明
