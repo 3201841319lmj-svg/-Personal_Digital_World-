@@ -65,6 +65,8 @@ Personal Digital World
 ## 🚀 快速导航
 
 - 🤝 **[AI Studio 协作指示](./AGENTS.md)** - AI 团队组织架构、职责边界、开发流程与审核规则
+- 🧭 **[AI 团队同步笔记](./AI_TEAM_SYNC_NOTEBOOK.md)** - 所有项目、Agent 工作区、Memory 架构与协作状态
+- ☁️ **[共享工作区建设方案](./AI_STUDIO_SHARED_WORKSPACE_PLAN.md)** - 本地与云端 Agent Hub、同步机制和权限模型
 - 📋 **[项目地图](./PROJECT_INDEX.md)** - 所有项目详细索引
 - 🗓️ **[发展规划](./ROADMAP.md)** - 当前阶段与未来方向
 - 📁 **[完整目录结构](./STRUCTURE.md)** - 详细的目录说明

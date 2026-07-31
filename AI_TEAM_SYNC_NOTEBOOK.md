@@ -1,6 +1,6 @@
 # Personal Digital World｜AI 团队、项目与工作区同步笔记
 
-> 版本：2026-07-31 v3.1（Antigravity 记忆与轨迹系统已登记）
+> 版本：2026-07-31 v3.2（核心发布质量校正与共享工作区入口已登记）
 > 时区：Asia/Shanghai
 > 用途：供 ChatGPT、Codex、Antigravity、CodeBuddy、Hermes、OpenClaw 统一了解团队分工、项目全貌、仓库关系、本地工作区和协作规则。
 > 维护原则：已实际确认的信息标为"已核验"；尚未提供或无法证明的信息标为"待登记"，任何 Agent 不得自行猜测。
@@ -213,7 +213,7 @@
 | Hermes 服务器 / 部署根目录 | `云端托管，禁止在共享笔记填写密码或密钥` | Linux、Docker、Nginx、日志、备份与部署均在云端 | 云端/不适用 |
 | OpenClaw 配置根目录 | `C:\Users\黎敏君\.openclaw` | Agent、设备、身份、日志、媒体、插件、状态及主配置；本地配置侧已有内容 | 已核验 |
 | OpenClaw 本地工作区 | `C:\Users\黎敏君\.openclaw\workspace` | OpenClaw 的本地 Agent 工作区，包含身份、工具、用户和工作区状态文件 | 已核验 |
-| OpenClaw 云端 Memory 路径 | `云端托管，禁止在共享密钥` | OpenClaw 核心 Memory 与长期记忆托管在云端 | 云端/不适用 |
+| OpenClaw 云端 Memory 路径 | `云端托管，禁止在共享笔记中填写密钥` | OpenClaw 核心 Memory 与长期记忆托管在云端 | 云端/不适用 |
 
 ### Codex 记忆架构与记忆区
 
@@ -284,6 +284,13 @@ Personal Digital World 当前登记在 Codex 的全局 Memory 体系中，不另
 7. `work` 中的临时材料和 `outputs` 中的交付文档不会自动进入长期 Memory。
 8. Codex Memory、CodeBuddy Memory、OpenClaw Memory 与产品运行时 Memory 必须保持职责、目录和生命周期隔离。
 
+#### 6. 本次登记结果
+
+- 已完整读取共享同步笔记 v2.2，包括 CodeBuddy 工作区、写入边界、长期记忆和每日日志规则。
+- 已核验 Codex Memory 根目录、摘要、索引、原始汇总、回合摘要、受控增量区与原始会话证据区均存在。
+- 已将 Codex 的记忆架构与记忆区同步到共享文档，没有修改 Codex 长期 Memory 本体。
+- Antigravity 后续已在 v3.1 中登记自己的记忆与轨迹系统；各 Agent Memory 继续保持自治和只读协作边界。
+
 ### Antigravity 记忆与轨迹系统
 
 > 由 Antigravity（产品开发部／设计负责人）于 2026-07-31 登记；说明 Antigravity 的三层持久化记忆与全量执行轨迹体系。
@@ -291,7 +298,7 @@ Personal Digital World 当前登记在 Codex 的全局 Memory 体系中，不另
 #### 1. 三层记忆架构
 - **第一层：实时工作记忆 (In-Context Working Memory)**
   - 每次会话的上下文、消息历史与终端实时 Log。
-  - 全量执行轨迹在后台按 JSONL 格式落盘至 `<appDataDir>\brain\<conversation-id>\.system_generated\logs\transcript.jsonl`，记录所有工具调用、思考过程与指令逻辑，可随时反查。
+  - 平台可用的执行轨迹按 JSONL 格式落盘至 `<appDataDir>\brain\<conversation-id>\.system_generated\logs\transcript.jsonl`，用于反查已记录的会话、工具调用和执行日志；不得把它描述为可访问未向 Agent 暴露的模型内部思考过程。
 - **第二层：持久化项目文稿 (Artifacts & Workspace Snapshots)**
   - 存放于项目工作区/脑图目录下的 Artifacts（如 `implementation_plan.md` 实施计划、`walkthrough.md` 走查总结）及 `PROJECT_INDEX.md` / `README.md`。
   - 记录重大架构设计、需求变更、UI/UX 方案与验证结果，跨会话可随时读取恢复上下文。
@@ -362,7 +369,7 @@ Personal Digital World 当前登记在 Codex 的全局 Memory 体系中，不另
 
 ### 工作区特别说明
 
-1. `Antigravity_Workspace`、其 `Projects` 副本、独立原型目录和 Personal Digital World 主开发工作树是不同位置，不得静模互相覆盖。
+1. `Antigravity_Workspace`、其 `Projects` 副本、独立原型目录和 Personal Digital World 主开发工作树是不同位置，不得静默互相覆盖。
 2. Codex 的 `work` 与 `outputs` 都不等于正式产品仓库；正式代码状态仍以主开发 Git 工作树和远程分支为准。
 3. `C:\Users\黎敏君\.codebuddy` 只作为 CodeBuddy 配置、扩展、插件、Skills 和灵感资料根目录；CodeBuddy 正式内容资产统一登记在 `C:\Users\黎敏君\CodeBuddy\`，不得混用。
 4. OpenClaw 的配置根目录可能包含身份、认证或运行配置；共享时只传路径和职责，不复制敏感内容。
@@ -370,7 +377,8 @@ Personal Digital World 当前登记在 Codex 的全局 Memory 体系中，不另
 6. CodeBuddy 与 Codex 共享内容时，CodeBuddy 只在 `C:\Users\黎敏君\CodeBuddy\` 写入正式资产，把引用清单交给 Codex；正式产品文档由 Codex 决定是否落进其 `outputs` 目录。
 7. CodeBuddy 在每个任务工作区下都有独立的 `.codebuddy\memory\`（含 `MEMORY.md` 长期记忆 + `YYYY-MM-DD.md` 每日日志），归 CodeBuddy 自治，其他 Agent 只读引用，不得直接改写；详见上方"CodeBuddy 记忆与日志系统"。
 8. Codex 的长期 Memory 位于 `C:\Users\黎敏君\.codex\memories\`，原始会话证据位于 `C:\Users\黎敏君\.codex\sessions\`；这些区域归 Codex 自治，其他 Agent 只读引用，不得直接改写；详见上方"Codex 记忆架构与记忆区"。
-9. Antigravity 的记忆以主开发 Git 工作树实体文件、Artifacts 文稿及 JSONL 轨迹日志为三大支柱，确保代码逻辑、架构设计与用户偏好绝对可靠，其它 Agent 协作时以主仓库索引 `PROJECT_INDEX.md` 为开发状态的权威参照；详见上方"Antigravity 记忆与轨迹系统"。
+9. Antigravity 的记忆以主开发 Git 工作树实体文件、Artifacts 文稿及 JSONL 轨迹日志为三大支柱。`PROJECT_INDEX.md` 用于项目登记与导航；当前开发状态必须以实际代码、Git 状态、测试、构建和部署证据为准。详见上方"Antigravity 记忆与轨迹系统"。
+10. 团队共享工作区的目标架构、同步机制和权限模型见仓库根目录 `AI_STUDIO_SHARED_WORKSPACE_PLAN.md`；在 Hub 正式建立前，本仓库仍是 Personal Digital World 产品代码的唯一权威仓库。
 
 ---
 
@@ -493,7 +501,7 @@ Codex（最终审核与发布）
 | CodeBuddy | 正式内容资产工作区绝对路径；知识库与 Archive 的实际写入边界；CodeBuddy 记忆与工作日志系统登记 | ✅ 已补充（2026-07-31）：工作区根 `C:\Users\黎敏君\CodeBuddy\`；一级分类 `学习\`、`工作\（金融\ / 其他工作\）`、`项目\`、`Claw\`；任务隔离 `C:\Users\黎敏君\CodeBuddy\YYYYMMDDhhmmss\`；记忆系统 `C:\Users\黎敏君\CodeBuddy\YYYYMMDDhhmmss\.codebuddy\memory\`（含 `MEMORY.md` + `YYYY-MM-DD.md`）；详细写入边界见第四节"CodeBuddy 写入边界说明"，记忆体系见第四节"CodeBuddy 记忆与日志系统" |
 | Antigravity | 主开发 Git 树代码 + Artifacts 持久化文稿 (`implementation_plan.md`/`walkthrough.md`) + 全量 JSONL 轨迹日志；三层记忆架构 | ✅ 已补充（2026-07-31）：详见第四节"Antigravity 记忆与轨迹系统" |
 | Hermes | 本地运维工作区（若有）；服务器项目根目录；部署环境名称；日志与备份路径的非敏感说明 | ☁️ 云端/不适用（2026-07-31）：Hermes 主要资产在云端服务器，无固定本地工作区；不在共享笔记中登记云端地址、账号、密钥、证书、Token |
-| OpenClaw | 云端 Memory 根目录的非敏感路径说明；本地与云端 Memory 的同步边界 | ☁️ 云端/不适用（2026-07-31）：OpenClaw 核心 Memory 与长期记忆托管在云端；本地仅保留 `C:\Users\黎敏君\.openclaw\` 配置与 `\.openclaw\workspace\` 工作区，详见第四节登记；不在共享密钥 |
+| OpenClaw | 云端 Memory 根目录的非敏感路径说明；本地与云端 Memory 的同步边界 | ☁️ 云端/不适用（2026-07-31）：OpenClaw 核心 Memory 与长期记忆托管在云端；本地仅保留 `C:\Users\黎敏君\.openclaw\` 配置与 `\.openclaw\workspace\` 工作区，详见第四节登记；不在共享笔记中登记云端密钥 |
 | ChatGPT | 若使用固定项目或文档空间，登记其名称与共享入口；无固定空间则保持"云端对话协作" | ☁️ 云端对话协作（2026-07-31）：用户确认 ChatGPT 以云端对话为主，无固定本地工作区；如未来出现固定空间再补登 |
 
 ---
@@ -584,3 +592,17 @@ Codex（最终审核与发布）
   6. 第十一节追加本 v3.1 变更记录。
 - **影响范围**：仅第四节（新增行 + 新增子章节 + 特别说明加 1 条）、第九节与第十一节变更记录；完全保留 Codex v3.0、CodeBuddy v2.2 及前期所有人登记的架构内容。
 - **未变更项**：仓库与本地源代码、团队架构、项目索引、协作流程、共同原则、交接模板保持原样。
+
+### v3.2 · 2026-07-31 · Codex（CTO／技术总监／总工程师）
+
+- **变更责任人**：Codex
+- **触发原因**：用户要求把 Agent 协作内容发布到 GitHub 仓库核心位置，并规划一个可供本地与云端 Agent 共同读取和同步的工作区。
+- **变更内容**：
+  1. 文头版本升级为 `v3.2（核心发布质量校正与共享工作区入口已登记）`。
+  2. 恢复 Codex v3.0 中被 v3.1 意外移除的“本次登记结果”。
+  3. 修正 OpenClaw 两处缺失语义和“静模”错字。
+  4. 将 Antigravity JSONL 描述校正为平台实际提供的会话、工具调用与执行日志，不宣称可读取未暴露的模型内部思考过程。
+  5. 明确 `PROJECT_INDEX.md` 是项目登记导航，而非脱离代码、Git 和测试的唯一实时状态来源。
+  6. 增加 `AI_STUDIO_SHARED_WORKSPACE_PLAN.md` 入口和共享 Hub 建设边界。
+- **影响范围**：协作与治理文档；不修改产品代码、Agent 自治 Memory、服务器配置或凭据。
+- **后续待办**：经用户确认 Hub 仓库名称、可见性和云端挂载路径后，再实施共享工作区 Phase 1–3。
