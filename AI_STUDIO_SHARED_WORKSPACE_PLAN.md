@@ -1,8 +1,9 @@
 # Personal Digital World AI Studio｜本地＋云端共享工作区建设方案
 
-> 状态：Architecture Proposal
+> 状态：Approved / Phase 1 Implemented
 > 日期：2026-07-31
 > 负责人：用户（最终决策）／Codex（技术架构与实施审核）
+> Private Hub：<https://github.com/3201841319lmj-svg/personal-digital-world-ai-studio-hub>
 
 ## 1. 目标
 
@@ -21,7 +22,7 @@
 保留两个职责不同的 Git 仓库：
 
 1. `personal_-digital_-world`：产品代码与正式项目内容的唯一权威仓库。
-2. 建议新建私有仓库 `personal-digital-world-ai-studio-hub`：只保存跨 Agent 协作状态、交接、决策、项目清单和自动化脚本。
+2. 已建立私有仓库 `personal-digital-world-ai-studio-hub`：只保存跨 Agent 协作状态、交接、决策、项目清单和自动化脚本。
 
 不要把 Personal Digital World 全量文件再复制进 Hub。复制会产生双重真相、冲突和同步负担。每台本地或云端机器应把两个仓库克隆为相邻目录，由 Hub 的注册表记录产品仓库地址、分支和当前核验提交。
 
@@ -234,9 +235,10 @@ Hub 不应依赖所有 Agent 不断轮询一份超长文档。建议使用三种
 
 ### Phase 1：建立私有 Hub
 
-- 用户确认仓库名和可见性。
-- Codex 创建 Hub 基础目录、Schemas、模板和 bootstrap 脚本。
-- 本机建立 `C:\Users\黎敏君\AI_Studio_Shared`，并并列克隆两个仓库。
+- ✅ 用户已确认仓库名与 Private 可见性。
+- ✅ Codex 已创建并发布 Hub 基础目录、Schemas、模板和 bootstrap 脚本。
+- ✅ 本机已建立 `C:\Users\黎敏君\AI_Studio_Shared`，并并列克隆两个仓库。
+- 当前 Hub 提交：`9aed518f796464ec09e5f57d70129b899fdc7fd8`。
 
 ### Phase 2：本地 Agent 接入
 
@@ -255,7 +257,7 @@ Hub 不应依赖所有 Agent 不断轮询一份超长文档。建议使用三种
 - 首选连接 GitHub App 读取两个私有仓库。
 - 若需要受控写入，再评估自建 MCP App。
 
-## 13. 实施前需要用户确认的五项决定
+## 13. 已确认的五项架构决定
 
 | 决定 | 推荐默认值 |
 |---|---|

@@ -1,6 +1,6 @@
 # Personal Digital World｜AI 团队、项目与工作区同步笔记
 
-> 版本：2026-07-31 v3.2（核心发布质量校正与共享工作区入口已登记）
+> 版本：2026-07-31 v3.3（Private Hub 与本地共享工作区已建立）
 > 时区：Asia/Shanghai
 > 用途：供 ChatGPT、Codex、Antigravity、CodeBuddy、Hermes、OpenClaw 统一了解团队分工、项目全貌、仓库关系、本地工作区和协作规则。
 > 维护原则：已实际确认的信息标为"已核验"；尚未提供或无法证明的信息标为"待登记"，任何 Agent 不得自行猜测。
@@ -378,7 +378,7 @@ Personal Digital World 当前登记在 Codex 的全局 Memory 体系中，不另
 7. CodeBuddy 在每个任务工作区下都有独立的 `.codebuddy\memory\`（含 `MEMORY.md` 长期记忆 + `YYYY-MM-DD.md` 每日日志），归 CodeBuddy 自治，其他 Agent 只读引用，不得直接改写；详见上方"CodeBuddy 记忆与日志系统"。
 8. Codex 的长期 Memory 位于 `C:\Users\黎敏君\.codex\memories\`，原始会话证据位于 `C:\Users\黎敏君\.codex\sessions\`；这些区域归 Codex 自治，其他 Agent 只读引用，不得直接改写；详见上方"Codex 记忆架构与记忆区"。
 9. Antigravity 的记忆以主开发 Git 工作树实体文件、Artifacts 文稿及 JSONL 轨迹日志为三大支柱。`PROJECT_INDEX.md` 用于项目登记与导航；当前开发状态必须以实际代码、Git 状态、测试、构建和部署证据为准。详见上方"Antigravity 记忆与轨迹系统"。
-10. 团队共享工作区的目标架构、同步机制和权限模型见仓库根目录 `AI_STUDIO_SHARED_WORKSPACE_PLAN.md`；在 Hub 正式建立前，本仓库仍是 Personal Digital World 产品代码的唯一权威仓库。
+10. 团队共享工作区的目标架构、同步机制和权限模型见仓库根目录 `AI_STUDIO_SHARED_WORKSPACE_PLAN.md`；Private Hub 已建立，但只管理协作状态、交接和决策，本仓库仍是 Personal Digital World 产品代码与正式项目内容的唯一权威仓库。
 
 ---
 
@@ -606,3 +606,16 @@ Codex（最终审核与发布）
   6. 增加 `AI_STUDIO_SHARED_WORKSPACE_PLAN.md` 入口和共享 Hub 建设边界。
 - **影响范围**：协作与治理文档；不修改产品代码、Agent 自治 Memory、服务器配置或凭据。
 - **后续待办**：经用户确认 Hub 仓库名称、可见性和云端挂载路径后，再实施共享工作区 Phase 1–3。
+
+### v3.3 · 2026-07-31 · Codex（CTO／技术总监／总工程师）
+
+- **变更责任人**：Codex
+- **触发原因**：用户批准推荐架构、登录 GitHub 并授权 Git 凭据，要求正式创建 Private Hub 与本地共享工作区。
+- **变更内容**：
+  1. 创建 Private Hub：`https://github.com/3201841319lmj-svg/personal-digital-world-ai-studio-hub`。
+  2. 在 `C:\Users\黎敏君\AI_Studio_Shared\` 建立 Hub 与产品仓库的并列 clone。
+  3. Hub 发布 Agent 职责、项目与工作区注册表、状态、决策、handoff、Schemas 和 bootstrap 脚本。
+  4. 为 Hermes 建立腾讯云 `/srv/pdw-ai-studio/` 部署交接单；云端当前仍为待实机部署。
+  5. 将共享工作区方案状态更新为 `Approved / Phase 1 Implemented`。
+- **核验提交**：Hub `9aed518f796464ec09e5f57d70129b899fdc7fd8`；本地 Hub 与远端 `main` 一致。
+- **后续待办**：完成 Phase 2 首次真实跨 Agent handoff、Phase 3 Hermes 云端部署，以及 Phase 4 网页 ChatGPT 私有仓库授权。
