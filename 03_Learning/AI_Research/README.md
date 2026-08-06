@@ -17,7 +17,7 @@ AI/ML 研究、论文阅读和实验记录。
 
 ## 🛠️ AI 技能与 MCP 工具集
 
-- [**useful-skills**](./useful-skills/README.md) - 个人精选与收藏的实用 AI 技能、MCP (Model Context Protocol) 插件及自动化工具库（如小红书 MCP 等）。
+- [**useful-skills**](./useful-skills/README.md) - 个人精选与收藏的实用 AI 技能、MCP (Model Context Protocol) 插件及自动化工具库（已收录 `xiaohongshu-mcp`、`human-writing` 活人感写作 Skill 等）。
 
 ## 📚 学习资源
 
