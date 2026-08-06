@@ -17,7 +17,8 @@ AI/ML 研究、论文阅读和实验记录。
 
 ## 🛠️ AI 技能与 MCP 工具集
 
-- [**useful-skills**](./useful-skills/README.md) - 个人精选与收藏的实用 AI 技能、MCP (Model Context Protocol) 插件及自动化工具库（已收录 `xiaohongshu-mcp`、`human-writing` 活人感写作 Skill 等）。
+- [**human-writing (活人感写作 Skill)**](./human-writing/SKILL.md) - 让 AI 写的中文读起来像具体的人在说话，通用创作与改稿 Skill（支持规则判定与成稿校验）。
+- [**useful-skills**](./useful-skills/README.md) - 个人精选与收藏的实用 AI 技能、MCP (Model Context Protocol) 插件及自动化工具库。
 
 ## 📚 学习资源
 

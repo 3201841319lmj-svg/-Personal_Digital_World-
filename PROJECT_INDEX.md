@@ -113,6 +113,7 @@ Personal Digital World 的完整项目地图。每个项目都在此处注册，
 | 项目 | 描述 | 状态 | 类型 | 路径 |
 |------|------|------|------|------|
 | **AI 研究** | 论文笔记、实验、研究 | 🔄 进行中 | Jupyter + Markdown | `03_Learning/AI_Research` |
+| **human-writing** | 活人感写作 Skill (解决 AI 中文冷漠/抽象腔调) | 🔄 进行中 | Markdown + Python | `03_Learning/AI_Research/human-writing` |
 | **useful-skills** | 实用 AI 技能与 MCP 工具集 (小红书 MCP 等) | 🔄 进行中 | Markdown + Submodule | `03_Learning/AI_Research/useful-skills` |
 
 ### 编程学习 | Programming
