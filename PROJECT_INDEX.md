@@ -151,6 +151,14 @@ Personal Digital World 的完整项目地图。每个项目都在此处注册，
 |------|------|------|------|------|
 | **阅读笔记** | 书评、想法、总结 | 🔄 进行中 | Markdown | `03_Learning/Reading` |
 
+### 实用技能与工具库 | Useful_Skills
+
+**定位** - 个人精选与收藏的实用 AI 技能、MCP 插件及自动化工具库
+
+| 项目 | 描述 | 状态 | 格式 | 路径 |
+|------|------|------|------|------|
+| **useful-skills** | AI 技能、MCP 插件与工具库（含 Spherse、human-writing 等） | 🔄 进行中 | Markdown + Scripts | `03_Learning/useful-skills` |
+
 ---
 
 ## 04_Life（生活）
