@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" role="img" aria-labelledby="title desc">
+  <title id="title">面包店小猫</title><desc id="desc">一只戴着面包帽、端着咖啡的小猫</desc>
+  <g fill="none" stroke="#3d2b24" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+    <path fill="#f6e6cd" d="M88 104 69 57l48 25c13-7 29-10 44-10s30 3 43 10l49-25-20 49c13 17 19 37 15 58-7 41-45 67-88 67s-81-25-89-66c-4-22 2-43 17-61Z"/>
+    <path fill="#fff4df" d="M103 81c-3-22 13-42 35-42 8-20 40-20 48 0 23 0 39 21 35 43-23-8-93-9-118-1Z"/>
+    <path d="M137 137c7 6 15 6 22 0 7 6 15 6 22 0"/>
+    <path d="M132 117h1m55 0h1" stroke-width="10"/>
+    <path fill="#d88952" d="M151 126c6-5 13-5 19 0-4 8-15 8-19 0Z"/>
+    <path d="m111 144-33 1m34 14-29 9m127-24 33-1m-34 16 29 9"/>
+    <path fill="#f6e6cd" d="M113 209c-15 18-21 40-13 58h122c7-18 2-40-14-58"/>
+    <path fill="#c87f4d" d="M116 214c17 13 72 13 89 0l10 51H105l11-51Z"/>
+    <path fill="#fff4df" d="M179 201h63v43c0 14-11 25-25 25h-13c-14 0-25-11-25-25v-43Z"/>
+    <path d="M242 212h13c15 0 15 28 0 28h-13"/>
+    <path fill="#795642" d="M187 213h47v15h-47z"/>
+    <path d="M201 197c-7-10 8-13 1-24m22 24c-7-10 8-13 1-24" stroke="#f3c995"/>
+    <path fill="#e8b879" d="M49 235c15-22 35-22 50 0-7 28-42 28-50 0Z"/>
+    <path d="M61 230h26m-13-10v29" stroke-width="4"/>
+  </g>
+</svg>
