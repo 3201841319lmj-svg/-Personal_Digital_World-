@@ -2,7 +2,6 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { getSupabase } from "@/lib/supabase";
 import { SECTIONS, type SectionId, type Task } from "@/lib/types";
 
 const STORAGE_KEY = "today-bake-tasks-v1";
@@ -50,39 +49,29 @@ export function TodoDashboard() {
 
   const loadTasks = useCallback(async () => {
     setLoading(true);
-    const supabase = getSupabase();
-    if (!supabase) {
-      setTasks(readLocalTasks());
-      setNotice("本地模式");
-      setLoading(false);
-      return;
-    }
-
-    const { data: sessionData } = await supabase.auth.getSession();
-    if (!sessionData.session) {
-      const { error } = await supabase.auth.signInAnonymously();
-      if (error) {
-        setTasks(readLocalTasks());
-        setNotice("云端暂不可用，已切换本地模式");
-        setLoading(false);
-        return;
+    const cachedTasks = readLocalTasks();
+    try {
+      const parameters = new URLSearchParams({ from: history.at(-1)!, to: today });
+      const response = await fetch(`/api/tasks?${parameters}`, { cache: "no-store" });
+      if (!response.ok) throw new Error("Unable to load tasks");
+      const data = (await response.json()) as { tasks: Task[]; canImportLocal: boolean };
+      if (data.canImportLocal && cachedTasks.length) {
+        const migration = await fetch("/api/tasks", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ tasks: cachedTasks }),
+        });
+        if (!migration.ok) throw new Error("Unable to migrate local tasks");
+        setTasks(cachedTasks);
+        setNotice("旧数据已迁移到服务器");
+      } else {
+        setTasks(data.tasks);
+        writeLocalTasks(data.tasks);
+        setNotice("服务器已同步");
       }
-    }
-
-    const { data, error } = await supabase
-      .from("tasks")
-      .select("id,date,section,title,completed,parent_id,sort_order,created_at")
-      .gte("date", history.at(-1)!)
-      .lte("date", today)
-      .order("sort_order")
-      .order("created_at");
-
-    if (error) {
-      setTasks(readLocalTasks());
-      setNotice("云端读取失败，已切换本地模式");
-    } else {
-      setTasks((data || []) as Task[]);
-      setNotice("已连接云端");
+    } catch {
+      setTasks(cachedTasks);
+      setNotice("服务器暂不可用，显示本机缓存");
     }
     setLoading(false);
   }, [history, today]);
@@ -93,12 +82,28 @@ export function TodoDashboard() {
   }, [loadTasks]);
 
   async function persist(next: Task[], changed?: Task | Task[], removeIds: string[] = []) {
+    const previous = tasks;
     setTasks(next);
     writeLocalTasks(next);
-    const supabase = getSupabase();
-    if (!supabase || notice !== "已连接云端") return;
-    if (removeIds.length) await supabase.from("tasks").delete().in("id", removeIds);
-    else if (changed) await supabase.from("tasks").upsert(changed);
+    try {
+      const response = removeIds.length
+        ? await fetch("/api/tasks", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ids: removeIds }),
+          })
+        : await fetch("/api/tasks", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ tasks: Array.isArray(changed) ? changed : changed ? [changed] : [] }),
+          });
+      if (!response.ok) throw new Error("Unable to save tasks");
+      setNotice("已保存到服务器");
+    } catch {
+      setTasks(previous);
+      writeLocalTasks(previous);
+      setNotice("保存失败，已恢复原状");
+    }
   }
 
   function addTask(section: SectionId, title: string, parentId: string | null = null) {

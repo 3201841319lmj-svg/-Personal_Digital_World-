@@ -115,10 +115,12 @@
 
 ## 10. 数据与部署边界
 
-- 未配置 Supabase 时使用浏览器 `localStorage`，只用于本地体验。
-- Supabase 使用匿名会话和 RLS，每个用户只能访问自己的任务。
-- 前端只允许使用 anon key；禁止提交 service-role key、令牌或 `.env.local`。
-- Vercel 只配置 `NEXT_PUBLIC_SUPABASE_URL` 和 `NEXT_PUBLIC_SUPABASE_ANON_KEY`。
+- SQLite 是权威数据源，生产数据库位于 CVM Docker 持久化卷。
+- `localStorage` 只用于服务器空库时迁移旧数据，以及服务器故障时显示最近缓存。
+- 单用户密码门禁由 Nginx Basic Auth 提供，不在产品界面增加注册或账号管理。
+- 容器端口只绑定 `127.0.0.1:3010`，API 不直接暴露公网。
+- 数据库、备份、密码文件、证书私钥和 DNSPod Token 禁止提交到仓库。
+- 保留三个板块、子任务、15 天历史与删除确认；服务器存储改造不得扩展产品功能。
 
 ## 11. 变更检查
 

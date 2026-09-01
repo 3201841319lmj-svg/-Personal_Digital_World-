@@ -6,3 +6,8 @@ out
 .env.*
 npm-debug.log*
 *.tsbuildinfo
+.data
+backups
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm

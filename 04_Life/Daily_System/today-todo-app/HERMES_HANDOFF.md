@@ -1,24 +1,27 @@
 # Hermes 部署交接
 
-目标：将“今日烘焙单”从 WorkBuddy 静态交付切回腾讯云 CVM 自建运行。
+目标：部署“今日烘焙单”的 SQLite 服务器存储版本，并完成 `today.cyberhome.junjun-garden.online` 的单用户密码门禁和 DNS-01 HTTPS。
 
 ## 必须执行
 
-1. 使用 Hermes 自己的独立克隆拉取 `codex/today-todo-app-20260824`。
-2. 进入 `04_Life/Daily_System/today-todo-app`。
-3. 完整阅读 `README.md`、`DESIGN.md`、`ACCEPTANCE_REPORT.md` 和 `DEPLOY_CVM.md`。
-4. 在 CVM 上执行 `docker compose config --quiet`、构建、启动与健康检查。
-5. 接入现有 Nginx/HTTPS，不覆盖其他站点，不直接暴露容器端口。
-6. 若用户提供 Supabase 项目，只使用 URL 与 anon key，并先执行 `supabase/schema.sql`；绝不使用 service-role key。
-7. 完成后回报公开 HTTPS 地址、部署提交、容器健康状态、Supabase 或 localStorage 模式，以及手机端验收结果。
+1. 使用服务器现有独立克隆，核验部署分支、commit 与工作树状态。
+2. 完整阅读 `README.md`、`DESIGN.md`、`ACCEPTANCE_REPORT.md` 和 `DEPLOY_CVM.md`。
+3. 修改 Nginx 前备份，只处理该子域名的 server block。
+4. 构建后验证 `/api/health`、容器 healthy 和 `127.0.0.1:3010` 绑定。
+5. 使用交互式 `htpasswd` 创建门禁，不在消息或命令参数中传密码。
+6. 使用 DNS-01 签发证书；DNSPod Token 不进入聊天、仓库或日志。
+7. 验证任务写入、刷新、容器重建后的 SQLite 持久化。
+8. 创建一致性备份并至少完成一次可恢复性检查。
+9. 回报公网地址、commit、容器状态、证书状态、数据卷和备份状态，不回报任何凭据值。
 
-## 不要执行
+## 禁止执行
 
-- 不要部署 `today-todo-static-workbuddy-20260825.zip`。
-- 不要自行增加账号、提醒、统计或其他需求外功能。
-- 不要在仓库、命令、日志或聊天中写入服务器密码、访问令牌或 service-role key。
-- 不要修改产品设计、文案和数据边界。
+- 不要运行 `docker compose down -v`。
+- 不要覆盖 farm、文件助手、旧 Nginx 路径或其他端口。
+- 不要自行加入注册、提醒、标签、统计或其他产品功能。
+- 不要提交 SQLite 数据库、备份、密码文件、证书私钥或 DNSPod Token。
+- 不要在未完成公网、持久化与恢复验证前宣称部署成功。
 
-## 当前验证边界
+## 回滚原则
 
-Codex 已完成 Next.js 本地 lint、类型检查与生产构建。当前 Windows 环境没有 Docker，也没有 CVM 登录权限；Docker、Nginx、HTTPS 和公网访问必须由 Hermes 在 CVM 上实测后才能标记完成。
+应用代码和 SQLite 数据分别回滚。切换已知良好 commit 时保留 `today-todo-data` volume；数据库恢复必须先停主容器，并保留恢复前副本。

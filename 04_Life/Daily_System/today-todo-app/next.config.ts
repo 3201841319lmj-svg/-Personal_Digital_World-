@@ -5,7 +5,7 @@ const requestedOutput = process.env.NEXT_OUTPUT;
 const nextConfig: NextConfig = {
   agentRules: false,
   output:
-    requestedOutput === "standalone" || requestedOutput === "export"
+    requestedOutput === "standalone"
       ? requestedOutput
       : undefined,
   turbopack: {
