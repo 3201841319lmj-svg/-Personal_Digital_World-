@@ -85,6 +85,16 @@ npm run dev
 npm run build
 ```
 
+## 📱 PWA 与手机桌面图标
+
+- PWA 图标登记：`CAT-002 Archivist / 档案猫`
+- 角色动作：戴书记员帽，一只手挠头，另一只手抱文件夹
+- Manifest：`public/manifest.webmanifest`
+- Service Worker：`public/sw.js`（仅缓存 PWA 壳资源，不缓存 `/api/*` 或业务数据）
+- 图标目录：`public/icons/`
+
+生产环境必须通过 HTTPS 提供服务。若站点启用访问门禁，应允许匿名读取 Manifest、Service Worker、离线页与图标资源，否则 Android 无法正确安装为独立 PWA。
+
 ---
 
 ## 📜 关联文档

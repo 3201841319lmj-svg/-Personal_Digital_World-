@@ -1,0 +1,9 @@
+services:
+  file-assistant-hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pdw/file-assistant-hub:${IMAGE_TAG:-local}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3020:80"
